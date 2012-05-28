@@ -9,6 +9,6 @@ import com.rdc.timetable.entity.account.Account;
  *
  * @author crd 2012-5-27 下午02:37:49
  */
-public class AccountDao extends HibernateDao<Account, Long> {
+public class AccountDao extends HibernateDao<Account, String> {
 
 }

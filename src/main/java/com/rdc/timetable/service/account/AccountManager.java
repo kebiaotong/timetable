@@ -49,7 +49,7 @@ public class AccountManager {
 	/**
 	 * 删除用户,如果尝试删除超级管理员将抛出异常.
 	 */
-	public void deleteAccount(Long id) {
+	public void deleteAccount(String id) {
 		if (isSupervisor(id)) {
 			throw new ServiceException("不能删除超级管理员用户");
 		}
@@ -59,8 +59,8 @@ public class AccountManager {
 	/**
 	 * 判断是否超级管理员.
 	 */
-	private boolean isSupervisor(Long id) {
-		return id == 1;
+	private boolean isSupervisor(String id) {
+		return id.equals("1");
 	}
 	
 	/**

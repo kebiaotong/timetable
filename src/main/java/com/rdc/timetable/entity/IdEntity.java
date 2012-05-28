@@ -5,6 +5,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * 统一定义id的entity基类.
  * 
@@ -17,18 +19,18 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class IdEntity {
 
-	protected Long id;
+	protected String id;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	//@GeneratedValue(generator = "system-uuid")
-	//@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	public Long getId() {
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 }

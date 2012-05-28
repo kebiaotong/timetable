@@ -26,7 +26,7 @@ public class HibernateUtils {
 	 * @param clazz  集合中对象的类型,必须为IdEntity子类
 	 */
 	public static <T extends IdEntity> void mergeByCheckedIds(final Collection<T> srcObjects,
-			final Collection<Long> checkedIds, final Class<T> clazz) {
+			final Collection<String> checkedIds, final Class<T> clazz) {
 
 		//参数校验
 		Assert.notNull(srcObjects, "scrObjects不能为空");
@@ -45,7 +45,7 @@ public class HibernateUtils {
 
 			while (srcIterator.hasNext()) {
 				T element = srcIterator.next();
-				Long id = element.getId();
+				String id = element.getId();
 
 				if (!checkedIds.contains(id)) {
 					srcIterator.remove();
@@ -55,7 +55,7 @@ public class HibernateUtils {
 			}
 
 			//ID集合目前剩余的id均不在源集合中,创建对象,为id属性赋值并添加到源集合中.
-			for (Long id : checkedIds) {
+			for (String id : checkedIds) {
 				T element = clazz.newInstance();
 				element.setId(id);
 				srcObjects.add(element);
