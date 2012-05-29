@@ -71,8 +71,12 @@ public class ListToXML {
 			Method getMethod = pd.getReadMethod();// 获得get方法
 			Object o1 = getMethod.invoke(o);// 执行get方法返回一个Object
 			System.out.println(o1);
+			System.out.println("sss"+fields[i].getName());
 			Element e2 = ObjectElement.addElement(fields[i].getName());
-			e2.setText(o1.toString());
+			if(o1 != null) {
+				e2.setText(o1.toString());
+			}
+			
 		}
 	}
 }
